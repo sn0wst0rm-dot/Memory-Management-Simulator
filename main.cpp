@@ -74,7 +74,7 @@ int main() {
     map<int, void*> allocations;
     int next_id = 1;
 
-    cout << "=== FINAL SYSTEM SIMULATOR ===" << endl;
+    cout << "=== MEMORY MANAGEMENT SIMULATOR ===" << endl;
     cout << "RAM: " << ram_size << "B | Page Size: " << page_size << "B" << endl;
     print_help();
 
@@ -206,4 +206,5 @@ int main() {
     delete list_mem;
     
     return 0;
+
 }
