@@ -1,0 +1,48 @@
+=== VIRTUAL ADDRESS ACCESS LOG ===
+Policy: FIFO (Initial), LRU (Switched)
+
+[SEQ 1] Request VA: 0
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 0 into Frame 0
+   -> Result: PA 0
+
+[SEQ 2] Request VA: 64
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 1 into Frame 1
+   -> Result: PA 64
+
+[SEQ 3] Request VA: 128
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 2 into Frame 2
+   -> Result: PA 128
+
+[SEQ 4] Request VA: 192
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 3 into Frame 3
+   -> Result: PA 192
+
+[SEQ 5] Request VA: 256
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 4 into Frame 4
+   -> Result: PA 256
+
+[SEQ 6] Request VA: 0
+   -> Event: PAGE HIT (TLB/Table)
+   -> Result: PA 0
+
+--- SWITCHED VM POLICY TO LRU ---
+
+[SEQ 7] Request VA: 1000
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 15 into Frame 5
+   -> Result: PA 360
+
+[SEQ 8] Request VA: 2000
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 31 into Frame 6
+   -> Result: PA 400
+
+[SEQ 9] Request VA: 3000
+   -> Event: PAGE FAULT
+   -> Action: Loaded VPN 46 into Frame 7
+   -> Result: PA 504

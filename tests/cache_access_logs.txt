@@ -1,0 +1,46 @@
+=== CACHE ACCESS LOG ===
+Hierarchy: L1 (1 cyc) -> L2 (10 cyc) -> L3 (100 cyc) -> RAM (200 cyc)
+
+[SEQ 1] Access PA: 0
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+[SEQ 2] Access PA: 64
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+[SEQ 3] Access PA: 128
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+[SEQ 4] Access PA: 192
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+[SEQ 5] Access PA: 256
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+[SEQ 6] Access PA: 0
+   -> Latency: 111 cycles
+   -> Outcome: L3 HIT (L1/L2 Miss -> Found in L3)
+
+[SEQ 7] Access PA: 360
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+[SEQ 8] Access PA: 400
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+[SEQ 9] Access PA: 504
+   -> Latency: 311 cycles
+   -> Outcome: Cold Miss (RAM Fetch)
+
+=== FINAL CACHE STATISTICS ===
+L1 Cache (LRU):  0 Hits, 9 Misses (0.00%)
+L2 Cache (LRU):  0 Hits, 9 Misses (0.00%)
+L3 Cache (LRU):  1 Hits, 8 Misses (11.11%)
+
+Total Cycles: 2599
+Avg Access Time (AMAT): 288.778 cycles

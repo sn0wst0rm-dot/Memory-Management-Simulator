@@ -1,0 +1,42 @@
+init 2048
+set allocator first
+malloc 100
+malloc 500
+malloc 200
+free 2
+dump
+
+set allocator best
+malloc 400
+dump
+
+set allocator worst
+free 1
+malloc 50
+dump
+
+set allocator buddy
+malloc 128
+malloc 256
+free 1
+dump
+
+stats allocator
+
+vm policy fifo
+cache policy L1 lru
+
+access 0
+access 64
+access 128
+access 192
+access 256
+access 0
+
+vm policy lru
+access 1000
+access 2000
+access 3000
+
+stats system
+exit

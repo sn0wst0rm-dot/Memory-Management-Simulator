@@ -1,0 +1,181 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS E:\Memory Management Simulator\Memory-Management-Simulator> .\run_tests.ps1
+--- Building Simulator ---
+--- Running Integration Tests ---
+Input File: tests\full_simulation.txt
+-----------------------------------
+=== MEMORY MANAGEMENT SIMULATOR ===
+RAM: 4096B | Page Size: 64B
+
+=== COMMANDS ===
+--- Memory Allocator ---
+  init <size>             : Reset memory size (Clears all data)
+  malloc <size>           : Allocate block (Physical RAM)
+  free <id>               : Free block ID
+  set allocator <mode>    : Switch (buddy, first, best, worst)
+  dump                    : Show allocator memory map
+  stats allocator         : Show Memory Utilization & Frag
+
+--- CPU & Virtual Memory ---
+  access <v_addr>         : Read Virtual Address (VA -> PA -> Cache)
+  vm policy <fifo|lru>    : Set Page Replacement Policy
+
+--- Cache System ---
+  cache policy <lvl> <pol>: Set Cache Policy (L1/L2/L3, fifo/lru)
+  stats system            : Show VM & Cache Stats
+
+--- General ---
+  exit                    : Quit
+
+> System initialized with 2048 bytes.
+
+> Switched to First Fit.
+
+> Allocated ID 1 @ 0x1220e18
+
+> Allocated ID 2 @ 0x1220e8c
+
+> Allocated ID 3 @ 0x1221090
+
+> Freed ID 2
+
+> ==========================================
+              MEMORY DUMP
+==========================================
+[ALLOC] Offset:    0 | Size:  100 |
+[FREE] Offset:  116 | Size:  500 |
+[ALLOC] Offset:  632 | Size:  200 |
+[FREE] Offset:  848 | Size: 1184 |
+==========================================
+
+>
+> Switched to Best Fit.
+
+> Allocated ID 4 @ 0x1220e8c
+
+> ==========================================
+              MEMORY DUMP
+==========================================
+[ALLOC] Offset:    0 | Size:  100 |
+[ALLOC] Offset:  116 | Size:  400 |
+[FREE] Offset:  532 | Size:   84 |
+[ALLOC] Offset:  632 | Size:  200 |
+[FREE] Offset:  848 | Size: 1184 |
+==========================================
+
+>
+> Switched to Worst Fit.
+
+> Freed ID 1
+
+> Allocated ID 5 @ 0x1221168
+
+> ==========================================
+              MEMORY DUMP
+==========================================
+[FREE] Offset:    0 | Size:  100 |
+[ALLOC] Offset:  116 | Size:  400 |
+[FREE] Offset:  532 | Size:   84 |
+[ALLOC] Offset:  632 | Size:  200 |
+[ALLOC] Offset:  848 | Size:   50 |
+[FREE] Offset:  914 | Size: 1118 |
+==========================================
+
+>
+> Switched to Buddy System.
+
+> Allocated ID 6 @ 0x1227ff8
+
+> Allocated ID 7 @ 0x12281f8
+
+>
+> === BUDDY SYSTEM DUMP ===
+Order 5 (32 bytes): [Empty]
+Order 6 (64 bytes): [Empty]
+Order 7 (128 bytes): [Empty]
+Order 8 (256 bytes): [Free @256] -> NULL
+Order 9 (512 bytes): [Empty]
+Order 10 (1024 bytes): [Free @1024] -> NULL
+Order 11 (2048 bytes): [Empty]
+=========================
+
+>
+>
+--- ALLOCATOR STATISTICS ---
+
+=== BUDDY SYSTEM STATS ===
+Total Memory:    2048 bytes
+Used Memory:     768 bytes
+Free Memory:     1280 bytes
+Free Blocks:     2
+Utilization:     37.5%
+==========================
+
+>
+> VM Policy: FIFO
+
+> L1 policy set to lru
+
+>
+> [CPU] Request VA: 0 [Page Fault] Loaded VPN 0 into Frame 0
+ -> PA: 0 -> Done. (Latency: 311 cycles)
+
+> [CPU] Request VA: 64 [Page Fault] Loaded VPN 1 into Frame 1
+ -> PA: 64 -> Done. (Latency: 311 cycles)
+
+> [CPU] Request VA: 128 [Page Fault] Loaded VPN 2 into Frame 2
+ -> PA: 128 -> Done. (Latency: 311 cycles)
+
+> [CPU] Request VA: 192 [Page Fault] Loaded VPN 3 into Frame 3
+ -> PA: 192 -> Done. (Latency: 311 cycles)
+
+> [CPU] Request VA: 256 [Page Fault] Loaded VPN 4 into Frame 4
+ -> PA: 256 -> Done. (Latency: 311 cycles)
+
+> [CPU] Request VA: 0 -> PA: 0 -> Done. (Latency: 111 cycles)
+
+>
+> VM Policy: LRU
+
+> [CPU] Request VA: 1000 [Page Fault] Loaded VPN 15 into Frame 5
+ -> PA: 360 -> Done. (Latency: 311 cycles)
+
+> [CPU] Request VA: 2000 [Page Fault] Loaded VPN 31 into Frame 6
+ -> PA: 400 -> Done. (Latency: 311 cycles)
+
+> [CPU] Request VA: 3000 [Page Fault] Loaded VPN 46 into Frame 7
+ -> PA: 504 -> Done. (Latency: 311 cycles)
+
+>
+>
+=== VIRTUAL MEMORY STATS (LRU) ===
+Page Hits:   1
+Page Faults: 8
+Evictions:   0
+Hit Rate:    11.1111%
+=== L1 Cache Stats (LRU) ===
+Hits:       0
+Misses:     9
+Hit Rate:   0%
+=== L2 Cache Stats (LRU) ===
+Hits:       0
+Misses:     9
+Hit Rate:   0%
+=== L3 Cache Stats (LRU) ===
+Hits:       1
+Misses:     8
+Hit Rate:   11.1111%
+
+=== PERFORMANCE METRICS ===
+Total Accesses: 9
+Total Cycles:   2599
+Avg Access Time (AMAT): 288.778 cycles
+
+>
+-----------------------------------
+Test Sequence Complete.
+PS E:\Memory Management Simulator\Memory-Management-Simulator>
