@@ -1,6 +1,8 @@
 # Memory Management Simulator
 ACM Open Project Winter 2025
 
+![MMS](docs/architecture_diagram.png)
+
 A systems-level simulation of a computer's memory hierarchy, written in C++.
 
 This project models the complete data path of a memory access request: starting from a CPU issuing a Virtual Address, passing through the MMU for translation, traversing a 3-level Cache Hierarchy, and finally accessing Physical Main Memory.
