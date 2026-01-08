@@ -114,7 +114,6 @@ void MemoryManager::print_stats() {
     size_t total_allocated = 0;
     size_t free_blocks = 0;
     size_t largest_free_chunk = 0;
-    size_t internal_frag_estimate = 0;
 
     BlockHeader* current = head;
     while (current != nullptr) {
@@ -159,4 +158,5 @@ void MemoryManager::print_stats() {
     cout << "Success Rate:       " << (success_rate * 100) << "%" << endl;
     cout << "Failure Rate:       " << (failure_rate * 100) << "%" << endl;
     cout << "===================================" << endl;
+
 }
