@@ -121,7 +121,7 @@ void BuddyManager::free(void* ptr) {
 
 void BuddyManager::dump_memory() {
     cout << "=== BUDDY SYSTEM DUMP ===" << endl;
-    for (int i = 0; i < free_lists.size(); i++) {
+    for (size_t i = 0; i < free_lists.size(); i++) {
         size_t size = (size_t)1 << i;
         if (size < min_block_size) continue;
 
@@ -144,7 +144,7 @@ void BuddyManager::print_stats() {
     size_t total_free = 0;
     size_t free_blocks_count = 0;
 
-    for (int i = 0; i < free_lists.size(); i++) {
+    for (size_t i = 0; i < free_lists.size(); i++) {
         BlockHeader* curr = free_lists[i];
         size_t block_size = (size_t)1 << i;
         
@@ -167,4 +167,5 @@ void BuddyManager::print_stats() {
     std::cout << "Free Blocks:     " << free_blocks_count << endl;
     std::cout << "Utilization:     " << (utilization * 100) << "%" << endl;
     std::cout << "==========================" << std::endl;
+
 }
