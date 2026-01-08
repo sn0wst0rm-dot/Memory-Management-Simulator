@@ -7,15 +7,14 @@ A systems-level simulation of a computer's memory hierarchy, written in C++.
 
 This project models the complete data path of a memory access request: starting from a CPU issuing a Virtual Address, passing through the MMU for translation, traversing a 3-level Cache Hierarchy, and finally accessing Physical Main Memory.
 
-## Video Demonstration
-Memory Management Simulator :  [https://youtu.be/qgLcO22deHU](https://youtu.be/qgLcO22deHU)
-## Why this exists
-
 I built this to visualize and test how different memory management strategies interact in a controlled environment. Operating system memory subsystems are opaque and often difficult to debug or modify without recompiling the kernel.
 
 This tool isolates the logic for allocation, paging, and caching. It allows you to swap algorithms (e.g., changing L1 cache from LRU to FIFO, or switching the allocator from Best Fit to Buddy System) and immediately measure the impact on hit rates, latency, and fragmentation.
 
-## How it works
+## Video Demonstration
+Memory Management Simulator :  [https://youtu.be/qgLcO22deHU](https://youtu.be/qgLcO22deHU)
+
+## How It Works
 
 The simulator runs an interactive CLI loop where you act as the OS/CPU, issuing commands to allocate memory or access specific addresses.
 
@@ -123,6 +122,55 @@ I included an integration test script that verifies all features (allocators, ca
 .\run_tests.ps1
 
 ```
+## Project Structure
+```
+Memory-Management-Simulator/
+├── docs/
+│   ├── architecture_diagram.png
+│   ├── Design and Implementation of a Memory Management Simulator.pdf
+│   └── Design_Layout.pdf
+├── include/
+│   ├── allocation_strategy.h
+│   ├── block.h
+│   ├── buddy_manager.h
+│   ├── cache_hierarchy.h
+│   ├── cache_line.h
+│   ├── cache.h
+│   ├── memory_manager.h
+│   ├── memory_system.h
+│   ├── replacement_policy.h
+│   └── vm/
+│       ├── page_replacement_policy.h
+│       └── page_table.h
+├── main.cpp
+├── Makefile
+├── README.md
+├── run_tests.ps1
+├── run_tests.sh
+├── src/
+│   ├── allocator/
+│   │   ├── best_fit.cpp
+│   │   ├── best_fit.h
+│   │   ├── buddy_manager.cpp
+│   │   ├── first_fit.cpp
+│   │   ├── first_fit.h
+│   │   ├── memory_manager.cpp
+│   │   ├── worst_fit.cpp
+│   │   └── worst_fit.h
+│   ├── cache/
+│   │   ├── cache.cpp
+│   │   ├── fifo_policy.h
+│   │   └── lru_policy.h
+│   └── vm/
+│       ├── fifo_page_policy.h
+│       └── lru_page_policy.h
+└── tests/
+    ├── cache_access_logs.txt
+    ├── expected_output.txt
+    ├── full_simulation.txt
+    └── virtual_address_access_logs.txt
+```
+
 
 ## Limitations
 
